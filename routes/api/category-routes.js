@@ -15,6 +15,10 @@ router.get("/", (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
+      // Note that instead of sending actual error back to client, you could also send a custom message like so:
+      // res.status(500).json({ message: "An error occurred." });
+      // This would be useful if you wanted to hide potential database errors from the client.
+      // Sent as err for school purposes.
     });
 });
 
@@ -50,7 +54,7 @@ router.post("/", (req, res) => {
     .then((dbCategoryData) => res.json(dbCategoryData))
     .catch((err) => {
       console.log(err);
-      res.status(500).json({ message: "No category found!" });
+      res.status(500).json(err);
     });
 });
 
@@ -64,7 +68,7 @@ router.post("/", async (req, res) => {
     res.json(dbCategoryData);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "No category found!"});
+    res.status(500).json(err);
   }
 });
 
