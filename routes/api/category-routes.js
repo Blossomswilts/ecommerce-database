@@ -14,7 +14,7 @@ router.get("/", (req, res) => {
     .then((dbCategoryData) => res.json(dbCategoryData))
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
@@ -38,7 +38,7 @@ router.get("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
@@ -50,9 +50,24 @@ router.post("/", (req, res) => {
     .then((dbCategoryData) => res.json(dbCategoryData))
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json({ message: "No category found!" });
     });
 });
+
+
+
+router.post("/", async (req, res) => {
+  try {
+    const dbCategoryData = await Category.create({
+      category_name: req.body.category_name,
+    });
+    res.json(dbCategoryData);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "No category found!"});
+  }
+});
+
 
 // Update a category by its `id` value
 router.put("/:id", (req, res) => {
@@ -70,7 +85,7 @@ router.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
@@ -90,7 +105,7 @@ router.delete("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
