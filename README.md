@@ -44,7 +44,7 @@ This is the program interface using Insomnia to view the database where you can 
 
 
 
-Video Walk-Through: [E-Commerce Backend]()
+Video Walk-Through: [E-Commerce Backend](https://drive.google.com/file/d/1HCPji53Wouz112UCKCHJIAUxt6owgwZO/view)
 
 ## CodeBlock
 This is an optional asynchronous try catch block that could be used to replace the .then and .catch blocks in the routes. 
